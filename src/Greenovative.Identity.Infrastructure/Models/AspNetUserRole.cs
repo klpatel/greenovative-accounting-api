@@ -8,7 +8,7 @@ public partial class AspNetUserRole
 
     public int RoleId { get; set; }
 
-    public string ClientId { get; set; }
+    public Guid ClientId { get; set; }
 
     public int? StoreId { get; set; }
 
