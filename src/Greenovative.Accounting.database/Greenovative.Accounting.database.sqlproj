@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{be6dc648-c7e9-4e82-9fd3-44c51a9ca448}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -58,14 +58,14 @@
     <Folder Include="Properties" />
     <Folder Include="client" />
     <Folder Include="client\Tables" />
-    <Folder Include="dbo" />
-    <Folder Include="dbo\Tables" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\Post_Deployment" />
     <Folder Include="Scripts\Pre_Deployment" />
     <Folder Include="Security" />
     <Folder Include="accounting" />
     <Folder Include="accounting\Tables" />
+    <Folder Include="identity" />
+    <Folder Include="identity\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="client\Tables\Address.sql" />
@@ -75,30 +75,36 @@
     <Build Include="client\Tables\Contact.sql" />
     <Build Include="client\Tables\Store.sql" />
     <Build Include="client\Tables\UserClientRole.sql" />
-    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
-    <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
-    <Build Include="dbo\Tables\AspNetRoles.sql" />
-    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
-    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
-    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
-    <Build Include="dbo\Tables\AspNetUsers.sql" />
-    <Build Include="dbo\Tables\AspNetUserTokens.sql" />
-    <None Include="Scripts\Post_Deployment\seed.dbo.AspNetRoles.sql" />
+    <None Include="Scripts\Post_Deployment\seed.identity.AspNetRoles.sql" />
     <Build Include="Security\client.sql" />
     <Build Include="Security\identity.sql" />
     <Build Include="Security\accounting.sql" />
-    <Build Include="Security\security.sql" />
     <Build Include="accounting\Tables\account.sql" />
     <Build Include="accounting\Tables\accountcategory.sql" />
     <Build Include="accounting\Tables\accounttype.sql" />
     <Build Include="accounting\Tables\ledgeraccount.sql" />
     <Build Include="accounting\Tables\voucher.sql" />
     <Build Include="accounting\Tables\vouchertype.sql" />
+    <Build Include="identity\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="identity\Tables\AspNetRoleClaims.sql" />
+    <Build Include="identity\Tables\AspNetRoles.sql" />
+    <Build Include="identity\Tables\AspNetUserClaims.sql" />
+    <Build Include="identity\Tables\AspNetUserLogins.sql" />
+    <Build Include="identity\Tables\AspNetUserRoles.sql" />
+    <Build Include="identity\Tables\AspNetUsers.sql" />
+    <Build Include="identity\Tables\AspNetUserTokens.sql" />
+    <None Include="Scripts\Post_Deployment\seed.accounting.VoucherTypes.sql" />
+    <None Include="Scripts\Post_Deployment\seed.sccounting.AccountType.sql" />
+    <None Include="Scripts\Post_Deployment\seed.sccounting.AccountCategory.sql" />
+    <None Include="Scripts\Post_Deployment\seed.client.Client.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post_Deployment\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\Pre_Deployment\Script.PreDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post_Deployment\seed.sccounting.LedgerAccount.sql" />
   </ItemGroup>
 </Project>

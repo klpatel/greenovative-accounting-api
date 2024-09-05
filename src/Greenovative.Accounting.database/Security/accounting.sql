@@ -1,4 +1,4 @@
-﻿CREATE SCHEMA [accounting]
+﻿CREATE SCHEMA [Accounting]
     AUTHORIZATION [dbo];
 
 

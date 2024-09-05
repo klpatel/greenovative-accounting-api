@@ -1,4 +1,4 @@
-﻿CREATE TABLE [client].[UserClientRole] (
+﻿CREATE TABLE [Client].[UserClientRole] (
     [Id]         INT                IDENTITY (1, 1) NOT NULL,
     [UserId]     INT                NULL,
     [ClientId]   INT                NULL,

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{7688F2AB-FF57-4033-8EF0-31206E08AEA4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{7688F2AB-FF57-4033-8EF0-31206E08AEA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{B9FCC3BC-F8FC-4E4C-A4F4-F902DFDABEE9}"
 EndProject
@@ -23,19 +23,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Identity.Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Identity.App", "src\Greenovative.Identity.App\Greenovative.Identity.App.csproj", "{CF26A7DE-CC0D-4C35-9985-5682681EA487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Accounting.Domain", "src\Greenovative.Accounting.Domain\Greenovative.Accounting.Domain.csproj", "{83D55424-AC6D-4FB2-8F85-8E6D02FAF1ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Accounting.Domain", "src\Greenovative.Accounting.Domain\Greenovative.Accounting.Domain.csproj", "{83D55424-AC6D-4FB2-8F85-8E6D02FAF1ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Accounting.Framework", "src\Greenovative.Accounting.Framework\Greenovative.Accounting.Framework.csproj", "{2151ECCC-97AA-42C1-B8B5-5D0088A0BF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Accounting.Framework", "src\Greenovative.Accounting.Framework\Greenovative.Accounting.Framework.csproj", "{2151ECCC-97AA-42C1-B8B5-5D0088A0BF86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Accounting.Api", "src\Greenovative.Accounting.Api\Greenovative.Accounting.Api.csproj", "{93A43FA2-D48D-4093-A8C2-4352926BA728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Accounting.Api", "src\Greenovative.Accounting.Api\Greenovative.Accounting.Api.csproj", "{93A43FA2-D48D-4093-A8C2-4352926BA728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Administration.App", "src\Greenovative.Administration.App\Greenovative.Administration.App.csproj", "{F575A1DF-2400-4363-86B1-B11D3D9B41B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Administration.App", "src\Greenovative.Administration.App\Greenovative.Administration.App.csproj", "{F575A1DF-2400-4363-86B1-B11D3D9B41B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Administration.Infrastructure", "src\Greenovative.Administration.Infrastructure\Greenovative.Administration.Infrastructure.csproj", "{6273F6AB-EEB2-4903-8BCE-F78051C31449}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Administration.Infrastructure", "src\Greenovative.Administration.Infrastructure\Greenovative.Administration.Infrastructure.csproj", "{6273F6AB-EEB2-4903-8BCE-F78051C31449}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{D5F98249-79AC-4367-9015-3C138B83410E}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Greenovative.Accounting.database", "src\Greenovative.Accounting.database\Greenovative.Accounting.database.sqlproj", "{BE6DC648-C7E9-4E82-9FD3-44C51A9CA448}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{0DCBD094-A87E-4CA1-9511-1560020A9AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenovative.Clients.App", "src\Greenovative.Clients.App\Greenovative.Clients.App.csproj", "{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenovative.Clients.Infrastructure", "src\Greenovative.Clients.Infrastructure\Greenovative.Clients.Infrastructure.csproj", "{D6C8D56B-435D-43A0-A979-65F10BA36718}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +91,14 @@ Global
 		{BE6DC648-C7E9-4E82-9FD3-44C51A9CA448}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE6DC648-C7E9-4E82-9FD3-44C51A9CA448}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE6DC648-C7E9-4E82-9FD3-44C51A9CA448}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C8D56B-435D-43A0-A979-65F10BA36718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C8D56B-435D-43A0-A979-65F10BA36718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C8D56B-435D-43A0-A979-65F10BA36718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C8D56B-435D-43A0-A979-65F10BA36718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +117,9 @@ Global
 		{F575A1DF-2400-4363-86B1-B11D3D9B41B7} = {AC1F7926-2B44-4061-89D3-6CC8839C7BE8}
 		{6273F6AB-EEB2-4903-8BCE-F78051C31449} = {AC1F7926-2B44-4061-89D3-6CC8839C7BE8}
 		{BE6DC648-C7E9-4E82-9FD3-44C51A9CA448} = {D5F98249-79AC-4367-9015-3C138B83410E}
+		{0DCBD094-A87E-4CA1-9511-1560020A9AA4} = {B9FCC3BC-F8FC-4E4C-A4F4-F902DFDABEE9}
+		{B66B74D9-DDDA-43DA-AD83-F8BE7BF8989E} = {0DCBD094-A87E-4CA1-9511-1560020A9AA4}
+		{D6C8D56B-435D-43A0-A979-65F10BA36718} = {0DCBD094-A87E-4CA1-9511-1560020A9AA4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61392DAE-D0DF-4751-859F-797D6D9D6F37}

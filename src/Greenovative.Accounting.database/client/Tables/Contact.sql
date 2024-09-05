@@ -1,5 +1,5 @@
-﻿CREATE TABLE [client].[Contact] (
-    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+﻿CREATE TABLE [Client].[Contact] (
+    [Id]          NVARCHAR (50)     NOT NULL,
     [HomePhone]   VARCHAR (50) NULL,
     [OfficePhone] VARCHAR (50) NULL,
     [CellPhone]   VARCHAR (50) NULL,
