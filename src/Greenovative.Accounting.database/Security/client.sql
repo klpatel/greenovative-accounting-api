@@ -1,3 +1,3 @@
-﻿CREATE SCHEMA [client]
+﻿CREATE SCHEMA [Client]
     AUTHORIZATION [dbo];
 

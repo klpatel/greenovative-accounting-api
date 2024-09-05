@@ -9,11 +9,18 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+GO
 PRINT 'BEGIN POST-DEPLOYMENT'
 
+:r seed.identity.AspNetRoles.sql
 
-:r seed.dbo.AspNetRoles.sql
-GO
+:r seed.accounting.VoucherTypes.sql
+
+:r seed.sccounting.AccountType.sql
+
+:r seed.sccounting.AccountCategory.sql
+
+:r seed.sccounting.LedgerAccount.sql
 
 
 PRINT 'END POST-DEPLOYMENT'
