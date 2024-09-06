@@ -23,8 +23,7 @@ public static class IdentityConfiguration
 
         IdentityBuilder builder = new IdentityBuilder(identity.UserType, typeof(Role), identity.Services);
         builder.AddSignInManager<SignInManager<User>>();
-        //TO DO : find out replacement for AddEntityFrameworkStores
-        //builder.AddEntityFrameworkStores<IdentityDbContext>();
+        builder.AddEntityFrameworkStores<IdentityDbContext>();
         builder.AddDefaultTokenProviders();
         builder.AddTokenProvider("LotoMate", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
         builder.AddRoles<Role>();

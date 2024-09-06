@@ -8,7 +8,7 @@ public partial class UserClientRole
 
     public int? UserId { get; set; }
 
-    public int? ClientId { get; set; }
+    public Guid? ClientId { get; set; }
 
     public int? StoreId { get; set; }
 

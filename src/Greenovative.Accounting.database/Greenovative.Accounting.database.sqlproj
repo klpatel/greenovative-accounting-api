@@ -94,8 +94,8 @@
     <Build Include="identity\Tables\AspNetUsers.sql" />
     <Build Include="identity\Tables\AspNetUserTokens.sql" />
     <None Include="Scripts\Post_Deployment\seed.accounting.VoucherTypes.sql" />
-    <None Include="Scripts\Post_Deployment\seed.sccounting.AccountType.sql" />
-    <None Include="Scripts\Post_Deployment\seed.sccounting.AccountCategory.sql" />
+    <None Include="Scripts\Post_Deployment\seed.accounting.AccountType.sql" />
+    <None Include="Scripts\Post_Deployment\seed.accounting.AccountCategory.sql" />
     <None Include="Scripts\Post_Deployment\seed.client.Client.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +105,6 @@
     <PreDeploy Include="Scripts\Pre_Deployment\Script.PreDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\Post_Deployment\seed.sccounting.LedgerAccount.sql" />
+    <None Include="Scripts\Post_Deployment\seed.accounting.LedgerAccount.sql" />
   </ItemGroup>
 </Project>

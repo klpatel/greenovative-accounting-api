@@ -4,7 +4,7 @@ namespace Greenovative.Clients.Infrastructure.Models;
 
 public partial class Client
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
 
     public string ClientFName { get; set; }
 
