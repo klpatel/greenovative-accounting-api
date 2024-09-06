@@ -16,11 +16,13 @@ PRINT 'BEGIN POST-DEPLOYMENT'
 
 :r seed.accounting.VoucherTypes.sql
 
-:r seed.sccounting.AccountType.sql
+:r seed.accounting.AccountType.sql
 
-:r seed.sccounting.AccountCategory.sql
+:r seed.accounting.AccountCategory.sql
 
-:r seed.sccounting.LedgerAccount.sql
+:r seed.accounting.LedgerAccount.sql
+
+:r seed.client.Client.sql
 
 
 PRINT 'END POST-DEPLOYMENT'

@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Greenovative.Identity.App.Controllers;
-
 public class ClientRegisterController : BaseController
 {
     private readonly UserManager<User> userManager;
