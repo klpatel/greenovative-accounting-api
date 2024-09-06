@@ -18,14 +18,14 @@ public class ClientRegisterController : BaseController
     private readonly RoleManager<Role> roleManager;
     private readonly ILogger<ClientRegisterController> logger;
     private readonly IMediator mediator;
-    private readonly IUnitOfWork<IdentityDbContext> unitOfWork;
+    private readonly IUnitOfWork<ApplicationIdentityDbContext> unitOfWork;
 
     public ClientRegisterController(
        UserManager<User> userManager,
        RoleManager<Role> roleManager,
        ILogger<ClientRegisterController> logger,
        IMediator mediator,
-       IUnitOfWork<IdentityDbContext> unitOfWork
+       IUnitOfWork<ApplicationIdentityDbContext> unitOfWork
         , IHttpContextAccessor httpContextAccessor) : base(logger, httpContextAccessor)
     {
         this.userManager = userManager;

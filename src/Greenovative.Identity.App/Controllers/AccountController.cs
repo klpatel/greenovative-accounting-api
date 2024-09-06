@@ -28,7 +28,7 @@ public class AccountController : BaseController
     private readonly ILogger<AccountController> logger;
     private readonly IMediator mediator;
     private readonly ITokenGeneratorService tokenGeneratorService;
-    private readonly IUnitOfWork<IdentityDbContext> unitOfWork;
+    private readonly IUnitOfWork<ApplicationIdentityDbContext> unitOfWork;
     private readonly IConfiguration Configuration;
 
     public AccountController(
@@ -38,7 +38,7 @@ public class AccountController : BaseController
        IConfiguration config,
        ILogger<AccountController> logger,
        IMediator mediator,
-       IUnitOfWork<IdentityDbContext> unitOfWork,
+       IUnitOfWork<ApplicationIdentityDbContext> unitOfWork,
        IConfiguration configuration
 
         ) : base(logger)
@@ -103,8 +103,8 @@ public class AccountController : BaseController
     }
 
     [HttpPost("register")]
-    [Authorize(Policy = AuthPolicy.ClientAdmin)]
-    //[AllowAnonymous]
+    //[Authorize(Policy = AuthPolicy.ClientAdmin)]
+    [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] UserViewModel model)
     {
         if (ModelState.IsValid)

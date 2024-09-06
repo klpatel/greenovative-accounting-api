@@ -3,6 +3,6 @@ using Greenovative.Accounting.Framework.Data;
 
 namespace Greenovative.Identity.Infrastructure.Repositories;
 
-public interface IClientRepository : IRepository<RBAClient, IdentityDbContext>
+public interface IClientRepository : IRepository<RBAClient, ApplicationIdentityDbContext>
 {
 }

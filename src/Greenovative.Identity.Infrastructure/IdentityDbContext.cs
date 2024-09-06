@@ -11,7 +11,7 @@ public partial class IdentityDbContext : DbContext
     {
     }
 
-    public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+    public IdentityDbContext(DbContextOptions<ApplicationIdentityDbContext> options)
         : base(options)
     {
     }

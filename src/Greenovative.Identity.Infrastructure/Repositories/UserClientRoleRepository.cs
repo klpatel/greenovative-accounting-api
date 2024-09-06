@@ -3,9 +3,9 @@ using Greenovative.Identity.Infrastructure.ClientModels;
 
 namespace Greenovative.Identity.Infrastructure.Repositories;
 
-public class UserClientRoleRepository : Repository<UserClientRole, IdentityDbContext>, IUserClientRoleRepository
+public class UserClientRoleRepository : Repository<UserClientRole, ApplicationIdentityDbContext>, IUserClientRoleRepository
 {
-    public UserClientRoleRepository(IdentityDbContext context) : base(context)
+    public UserClientRoleRepository(ApplicationIdentityDbContext context) : base(context)
     {
     }
 
