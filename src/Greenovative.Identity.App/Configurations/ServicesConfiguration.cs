@@ -1,5 +1,6 @@
 ﻿using Greenovative.Accounting.Framework.Data;
 using Greenovative.Identity.Infrastructure;
+using Greenovative.Identity.Infrastructure.Models;
 using Greenovative.Identity.Infrastructure.Repositories;
 using Greenovative.Identity.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;

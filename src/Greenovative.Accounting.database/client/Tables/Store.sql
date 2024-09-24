@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Client].[Store] (
     [Id]                 INT                IDENTITY (1, 1) NOT NULL,
-    [ClientId]           NVARCHAR (50)      NULL,
+    [ClientId]           uniqueidentifier      NULL,
     [StoreNumber]        VARCHAR (50)       NULL,
     [StoreName]          VARCHAR (50)       NULL,
     [RegisteredName]     VARCHAR (50)       NULL,

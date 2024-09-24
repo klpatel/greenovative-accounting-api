@@ -91,12 +91,12 @@ public class ClientRegisterController : BaseController
     }
 
     [HttpGet("getStores/{clientId}")]
-    [Authorize(Policy = AuthPolicy.ClientAdmin)]
-    public async Task<IActionResult> GetStores(int clientId)
+    //[Authorize(Policy = AuthPolicy.ClientAdmin)]
+    public async Task<IActionResult> GetStores(Guid clientId)
     {
         try
         {
-            var stores = await mediator.Send(new GetStoreRequest() { ClientId = clientId, UserId = UserId });
+            var stores = await mediator.Send(new GetStoreRequest() { ClientId = clientId, UserId = UserId.Value });
             return Ok(stores.Stores);
         }
         catch (Exception ex)

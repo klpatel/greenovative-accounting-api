@@ -27,7 +27,7 @@ public class AddNewClientHandler : IRequestHandler<AddNewClientRequest, AddNewCl
         {
             //Add new client, Return existing if it finds
             var client = clientRepository.Queryable().Include(c => c.Contact)
-                            .Where(x => x.ClientFname == request.Client.ClientFname && x.ClientLname == request.Client.ClientLname
+                            .Where(x => x.ClientFName == request.Client.ClientFname && x.ClientLName == request.Client.ClientLname
                                     && x.Contact.Email1 == request.Client.EmailId)
                             .FirstOrDefault();
             if (client != null)
@@ -35,7 +35,7 @@ public class AddNewClientHandler : IRequestHandler<AddNewClientRequest, AddNewCl
                 logger.LogInformation("Client already exists with Id : {ClientId} ", client.Id);
                 return new AddNewClientResponse() { ClientId = client.Id, Exists = true, Suceess = true };
             }
-            client = mapper.Map<RBAClient>(request.Client);
+            client = mapper.Map<Client>(request.Client);
             client.AuditAdd(request.UserId);
             client = await clientRepository.AddAndSave(client);
             logger.LogInformation("New Client is added with Id : {ClientId} ", client.Id);
@@ -55,7 +55,7 @@ public class AddNewClientHandler : IRequestHandler<AddNewClientRequest, AddNewCl
 public class AddNewClientRequest : IRequest<AddNewClientResponse>
 {
     public RBAClientViewModel Client { get; set; }
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 }
 
 public class AddNewClientResponse

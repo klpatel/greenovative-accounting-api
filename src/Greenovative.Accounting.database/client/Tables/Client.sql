@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Client].[Client] (
-    [Id]          NVARCHAR (50)     NOT NULL,
+    [Id]          uniqueidentifier     NOT NULL,
     [ClientFName] VARCHAR (50)       NULL,
     [ClientMName] VARCHAR (50)       NULL,
     [ClientLName] VARCHAR (50)       NULL,

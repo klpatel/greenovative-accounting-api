@@ -1,70 +1,98 @@
 ﻿{
-  "CodeGenerationMode": 4,
-  "ContextClassName": "ApplicationIdentityDbContext",
-  "ContextNamespace": null,
-  "FilterSchemas": false,
-  "IncludeConnectionString": true,
-  "ModelNamespace": null,
-  "OutputContextPath": null,
-  "OutputPath": "Models",
-  "PreserveCasingWithRegex": true,
-  "ProjectRootNamespace": "Greenovative.Identity.Infrastructure",
-  "Schemas": null,
-  "SelectedHandlebarsLanguage": 2,
-  "SelectedToBeGenerated": 0,
-  "T4TemplatePath": null,
-  "Tables": [
-    {
-      "Name": "[identity].[AspNetRoleClaims]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetRoles]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetUserClaims]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetUserLogins]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetUserRoles]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetUsers]",
-      "ObjectType": 0
-    },
-    {
-      "Name": "[identity].[AspNetUserTokens]",
-      "ObjectType": 0
-    }
-  ],
-  "UiHint": null,
-  "UncountableWords": null,
-  "UseAsyncStoredProcedureCalls": true,
-  "UseBoolPropertiesWithoutDefaultSql": false,
-  "UseDatabaseNames": true,
-  "UseDateOnlyTimeOnly": true,
-  "UseDbContextSplitting": false,
-  "UseDecimalDataAnnotationForSprocResult": true,
-  "UseFluentApiOnly": true,
-  "UseHandleBars": false,
-  "UseHierarchyId": false,
-  "UseInflector": true,
-  "UseLegacyPluralizer": false,
-  "UseManyToManyEntity": false,
-  "UseNoDefaultConstructor": false,
-  "UseNoNavigations": false,
-  "UseNoObjectFilter": false,
-  "UseNodaTime": false,
-  "UseNullableReferences": false,
-  "UsePrefixNavigationNaming": false,
-  "UseSchemaFolders": false,
-  "UseSchemaNamespaces": false,
-  "UseSpatial": false,
-  "UseT4": false
+   "CodeGenerationMode": 4,
+   "ContextClassName": "ApplicationIdentityDbContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Greenovative.Identity.Infrastructure",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[Client].[Address]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[BusinessCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[BusinessType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[Client]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[Contact]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[Store]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Client].[UserClientRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetRoleClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserLogins]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserTokens]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
 }

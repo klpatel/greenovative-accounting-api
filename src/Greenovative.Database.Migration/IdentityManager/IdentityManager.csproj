@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>b7df9b5a-004d-44e3-9b8c-ad1a3275f8f6</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models_old\**" />
+    <Content Remove="Models_old\**" />
+    <EmbeddedResource Remove="Models_old\**" />
+    <None Remove="Models_old\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\ApplicationDbContext.cs" />
+    <Compile Remove="Migrations\20240918191722_mssql.onprem_migration_423.cs" />
+    <Compile Remove="Migrations\20240918191722_mssql.onprem_migration_423.Designer.cs" />
+    <Compile Remove="Migrations\20240918192308_mssql.onprem_migration_343.cs" />
+    <Compile Remove="Migrations\20240918192308_mssql.onprem_migration_343.Designer.cs" />
+    <Compile Remove="Migrations\20240919234910_mssql.onprem_migration_787.cs" />
+    <Compile Remove="Migrations\20240919234910_mssql.onprem_migration_787.Designer.cs" />
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\ApplicationIdentityDbContextModelSnapshot-old.cs" />
+    <Compile Remove="Migrations\ApplicationIdentityDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="efpt.config.json.user" />
+  </ItemGroup>
+
+</Project>

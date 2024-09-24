@@ -19,7 +19,7 @@ public class BaseController : ControllerBase
 {
     private readonly ILogger logger;
 
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
     public string UserName { get; set; }
 
     public BaseController(ILogger logger)
@@ -28,7 +28,7 @@ public class BaseController : ControllerBase
 
         UserId = null;
         if (User != null)
-            UserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
     }
     public BaseController(ILogger logger, IHttpContextAccessor httpContextAccessor)
     {
@@ -37,8 +37,8 @@ public class BaseController : ControllerBase
         UserId = null;
         if (user != null)
         {
-            int uid;
-            int.TryParse(user.FindFirstValue("userid"), out uid);
+            Guid uid;
+            Guid.TryParse(user.FindFirstValue("userid"), out uid);
             UserId = uid;
             UserName = user.FindFirstValue("unique_name");
         }
