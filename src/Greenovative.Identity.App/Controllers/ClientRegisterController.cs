@@ -1,8 +1,6 @@
-﻿using Greenovative.Accounting.Framework.Authorisation;
-using Greenovative.Accounting.Framework.Data;
+﻿using Greenovative.Accounting.Framework.Data;
 using Greenovative.Identity.App.Application.Handlers;
 using Greenovative.Identity.App.ViewModels;
-using Greenovative.Identity.Infrastructure;
 using Greenovative.Identity.Infrastructure.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

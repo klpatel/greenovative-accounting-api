@@ -20,19 +20,19 @@ public static class IdentityConfiguration
 
         services.AddDbContext<ApplicationIdentityDbContext>(x => x.UseSqlServer(connectionString));
 
-        //services.AddIdentity<User, Role>(options => IdentityPolicy.BuildPasswordOptions())
-        //.AddEntityFrameworkStores<ApplicationIdentityDbContext>()
-        //.AddRoles<Role>()
-        //.AddSignInManager<SignInManager<User>>()
-        //.AddDefaultTokenProviders()
-        //.AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
-
-        services.AddIdentityCore<User>(options => IdentityPolicy.BuildPasswordOptions())
-        .AddRoles<Role>()
+        services.AddIdentity<User, Role>(options => IdentityPolicy.BuildPasswordOptions())
         .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        .AddRoles<Role>()
         .AddSignInManager<SignInManager<User>>()
         .AddDefaultTokenProviders()
         .AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
+
+        //services.AddIdentityCore<User>(options => IdentityPolicy.BuildPasswordOptions())
+        //.AddRoles<Role>()
+        //.AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        //.AddSignInManager<SignInManager<User>>()
+        //.AddDefaultTokenProviders()
+        //.AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
 
         //services.AddIdentityCore<User>(options => IdentityPolicy.BuildPasswordOptions());
 

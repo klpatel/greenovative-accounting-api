@@ -6,6 +6,7 @@ using Greenovative.Identity.App.Extensions;
 using Greenovative.Identity.App.ViewModels;
 using Greenovative.Identity.Infrastructure;
 using Greenovative.Identity.Infrastructure.Models;
+using Greenovative.Identity.Infrastructure.Repositories;
 using Greenovative.Identity.Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -28,6 +29,7 @@ public class AccountController : BaseController
     private readonly ILogger<AccountController> logger;
     private readonly IMediator mediator;
     private readonly ITokenGeneratorService tokenGeneratorService;
+    private readonly IUserRoleRepository userRoleRepository;
     private readonly IUnitOfWork<ApplicationIdentityDbContext> unitOfWork;
     private readonly IConfiguration Configuration;
 
@@ -35,6 +37,7 @@ public class AccountController : BaseController
        UserManager<User> userManager,
        RoleManager<Role> roleManager,
        ITokenGeneratorService tokenGeneratorService,
+       IUserRoleRepository userRoleRepository,
        IConfiguration config,
        ILogger<AccountController> logger,
        IMediator mediator,
@@ -49,6 +52,7 @@ public class AccountController : BaseController
         this.logger = logger;
         this.mediator = mediator;
         this.tokenGeneratorService = tokenGeneratorService;
+        this.userRoleRepository = userRoleRepository;
         this.unitOfWork = unitOfWork;
         Configuration = configuration;
     }
@@ -86,7 +90,13 @@ public class AccountController : BaseController
                     {
                         return StatusCodeActionResult("Username and/or password is incorrect!", 412);
                     }
-                    var roles = await userManager.GetRolesAsync(user);
+                    //var roles = await userManager.GetRolesAsync(user);
+                    
+                    var roles = userRoleRepository.Queryable()
+                        .Include(r => r.Role)
+                        .Where(x=>x.UserId == user.Id)
+                        .Select(x=>x.Role.Name).ToList();
+                   
                     var tokendata = await tokenGeneratorService.GenerateTokens(user, roles);
 
                     return Ok(tokendata);
@@ -124,7 +134,7 @@ public class AccountController : BaseController
                 var userRole = await roleManager.FindByNameAsync("ClientUser");
 
                 //Add Admin role for User
-                var role = new UserClientRoleViewModel() { ClientId = model.ClientId, StoreId = model.StoreId, UserId = result.Id, RoleId = userRole.Id, IsActive = false };
+                var role = new UserClientRoleViewModel() { ClientId = model.ClientId, StoreId = model.StoreId, UserId = result.Id!.Value, RoleId = userRole!.Id, IsActive = false };
                 var roleRequest = new AddClientAdminRoleRequest() { Role = role, UserId = UserId };
                 var res2 = await mediator.Send(roleRequest);
                 await unitOfWork.SaveChangesAsync();

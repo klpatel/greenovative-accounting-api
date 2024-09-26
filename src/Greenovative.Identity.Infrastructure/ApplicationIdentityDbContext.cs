@@ -36,58 +36,39 @@ public partial class ApplicationIdentityDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.ToTable("AspNetUsers", "identity");
-        });
 
         modelBuilder.Entity<Role>(entity =>
         {
             entity.ToTable("AspNetRoles", "identity");
+
+            entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
+                .IsUnique()
+                .HasFilter("([NormalizedName] IS NOT NULL)");
+
+            entity.Property<Guid>(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name).HasMaxLength(256);
+            entity.Property(e => e.NormalizedName).HasMaxLength(256);
         });
 
-        //modelBuilder.Entity<AspNetRole>(entity =>
-        //{
-        //    entity.ToTable("AspNetRoles", "identity");
 
-        //    entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
-        //        .IsUnique()
-        //        .HasFilter("([NormalizedName] IS NOT NULL)");
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("AspNetUsers", "identity");
 
-        //    entity.Property(e => e.Id).ValueGeneratedNever();
-        //    entity.Property(e => e.Name).HasMaxLength(256);
-        //    entity.Property(e => e.NormalizedName).HasMaxLength(256);
-        //});
+            entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
 
+            entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
+                .IsUnique()
+                .HasFilter("([NormalizedUserName] IS NOT NULL)");
 
-        //modelBuilder.Entity<AspNetUser>(entity =>
-        //{
-        //    entity.ToTable("AspNetUsers", "identity");
+            entity.Property<Guid>(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Email).HasMaxLength(256);
+            entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+            entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+            entity.Property(e => e.UserName).HasMaxLength(256);
 
-        //    entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
-
-        //    entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
-        //        .IsUnique()
-        //        .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
-        //    entity.Property(e => e.Id).ValueGeneratedNever();
-        //    entity.Property(e => e.Email).HasMaxLength(256);
-        //    entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
-        //    entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
-        //    entity.Property(e => e.UserName).HasMaxLength(256);
-
-        //    //entity.HasMany(d => d.Roles).WithMany(p => p.Users)
-        //    //    .UsingEntity<Dictionary<string, object>>(
-        //    //        "AspNetUserRole",
-        //    //        r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
-        //    //        l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
-        //    //        j =>
-        //    //        {
-        //    //            j.HasKey("UserId", "RoleId");
-        //    //            j.ToTable("AspNetUserRoles", "identity");
-        //    //            j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
-        //    //        });
-        //});
+            
+        });
 
         modelBuilder.Entity<AspNetRoleClaim>(entity =>
         {
@@ -120,6 +101,12 @@ public partial class ApplicationIdentityDbContext : DbContext
 
         modelBuilder.Entity<AspNetUserRole>(entity =>
         {
+            entity.Property<Guid>("RoleId")
+                .HasColumnType("uniqueidentifier");
+
+            entity.Property<Guid>("UserId")
+                .HasColumnType("uniqueidentifier");
+
             entity.HasKey(e => new { e.UserId, e.RoleId });
             entity.ToTable("AspNetUserRoles", "identity");
 
@@ -140,15 +127,15 @@ public partial class ApplicationIdentityDbContext : DbContext
         });
         modelBuilder.Entity("AspNetRoleAspNetUser", b =>
         {
-            b.Property<Guid>("RolesId")
+            b.Property<Guid>("RoleId")
                 .HasColumnType("uniqueidentifier");
 
-            b.Property<Guid>("UsersId")
+            b.Property<Guid>("UserId")
                 .HasColumnType("uniqueidentifier");
 
-            b.HasKey("RolesId", "UsersId");
+            b.HasKey("RoleId", "UserId");
 
-            b.HasIndex("UsersId");
+            b.HasIndex("UserId");
 
             b.ToTable("AspNetRoleAspNetUser", "identity");
         });
@@ -221,6 +208,49 @@ public partial class ApplicationIdentityDbContext : DbContext
             entity.HasOne(d => d.Contact).WithMany(p => p.Clients)
                 .HasForeignKey(d => d.ContactId)
                 .HasConstraintName("FK_Client_Contact");
+
+            entity.HasMany(d => d.Stores).WithOne(p => p.Client)
+                .HasForeignKey(d => d.ClientId)
+                .HasConstraintName("FK_Client_Store");
+            entity.HasMany(d => d.AspNetUserRoles).WithOne(p => p.Client)
+                .HasForeignKey(d => d.ClientId)
+                .HasConstraintName("FK_Client_Store");
+
+        });
+
+        modelBuilder.Entity<Store>(entity =>
+        {
+            entity.ToTable("Store", "client");
+
+            entity.Property(e => e.RegisteredName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.Property(e => e.StoreName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.Property(e => e.StoreNumber)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.Property(e => e.TINNo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("TINNo");
+            entity.Property(e => e.CreatedBy)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifiedBy)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Client)
+                .WithMany(p => p.Stores)
+                .HasForeignKey(d => d.ClientId)
+                .HasConstraintName("FK_Store_Client");
+
+
         });
 
         modelBuilder.Entity<Contact>(entity =>
@@ -241,6 +271,12 @@ public partial class ApplicationIdentityDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.OfficePhone)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedBy)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifiedBy)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });

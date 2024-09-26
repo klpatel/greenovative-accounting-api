@@ -12,7 +12,7 @@ public partial class UserClientRole : BaseModel
 
     public int? StoreId { get; set; }
 
-    public int? RoleId { get; set; }
+    public Guid? RoleId { get; set; }
 
     public bool? IsActive { get; set; }
 
