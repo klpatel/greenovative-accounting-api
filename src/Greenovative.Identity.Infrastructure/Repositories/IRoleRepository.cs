@@ -3,6 +3,6 @@ using Greenovative.Identity.Infrastructure.Models;
 
 namespace Greenovative.Identity.Infrastructure.Repositories;
 
-public interface IRoleRepository : IRepository<AspNetRole, IdentityDbContext>
+public interface IRoleRepository : IRepository<AspNetRole, ApplicationIdentityDbContext>
 {
 }

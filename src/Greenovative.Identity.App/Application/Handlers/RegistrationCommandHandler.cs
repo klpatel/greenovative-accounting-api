@@ -25,22 +25,28 @@ public class RegistrationCommandHandler : IRequestHandler<RegistrationCommand, U
 
     public async Task<UserViewModel> Handle(RegistrationCommand request, CancellationToken cancellationToken)
     {
-        var findEmail = await userManager.FindByEmailAsync(request.Users.Email);
-        var findUser = request.Users.UserName != null ? await userManager.FindByNameAsync(request.Users.UserName) : null;
+        try
+        {
+            var findEmail = await userManager.FindByEmailAsync(request.Users.Email);
+            var findUser = request.Users.UserName != null ? await userManager.FindByNameAsync(request.Users.UserName) : null;
 
-        if (findEmail != null)
-            throw new DuplicateEmailException("Email already in use. Please register with different email.");
-        if (findUser != null)
-            throw new DuplicateUserNameException("UserName already in use. Please register with different UserName.");
+            if (findEmail != null)
+                throw new DuplicateEmailException("Email already in use. Please register with different email.");
+            if (findUser != null)
+                throw new DuplicateUserNameException("UserName already in use. Please register with different UserName.");
 
-        var user = mapper.Map<User>(request.Users);
-        var result = await userManager.CreateAsync(user, request.Users.Password);
-        //var results=await userManager.AddToRoleAsync(user, "Client User");
+            var user = mapper.Map<User>(request.Users);
+            var result = await userManager.CreateAsync(user, request.Users.Password);
+            //var results=await userManager.AddToRoleAsync(user, "Client User");
 
-        if (!result.Succeeded)
-            throw new IdentityException(JsonConvert.SerializeObject(result.Errors));
+            if (!result.Succeeded)
+                throw new IdentityException(JsonConvert.SerializeObject(result.Errors));
 
-        return mapper.Map<UserViewModel>(user); ;
+            return mapper.Map<UserViewModel>(user); ;
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 }
 public class RegistrationCommand : IRequest<UserViewModel>

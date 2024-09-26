@@ -3,7 +3,7 @@ using Greenovative.Identity.Infrastructure.Models;
 
 namespace Greenovative.Identity.Infrastructure.Repositories;
 
-public interface IAspnetUserRepository : IRepository<AspNetUser, IdentityDbContext>
+public interface IAspnetUserRepository : IRepository<AspNetUser, ApplicationIdentityDbContext>
 {
 
 }

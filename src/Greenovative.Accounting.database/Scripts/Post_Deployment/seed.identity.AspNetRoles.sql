@@ -1,9 +1,9 @@
 ﻿GO
-PRINT 'BEGIN SEEDING [Identity].AspNetRoles'
+PRINT 'BEGIN SEEDING [identity].AspNetRoles'
 
 DECLARE @src TABLE 
 (
-	Id int
+	Id uniqueidentifier
 	,[Name] nvarchar(256)
 	,NormalizedName nvarchar(256)
 	,ConcurrencyStamp nvarchar
@@ -11,18 +11,16 @@ DECLARE @src TABLE
 
 INSERT INTO @src (Id,[Name],NormalizedName,ConcurrencyStamp)
 VALUES
-(1,'SysAdmin','SysAdmin',NULL)
-,(2,'ClientAdmin','ClientAdmin',NULL)
-,(3,'ClientUser','ClientUser',NULL)
+(NEWID(),'SysAdmin','SysAdmin',NULL)
+,(NEWID(),'ClientAdmin','ClientAdmin',NULL)
+,(NEWID(),'ClientUser','ClientUser',NULL)
 
 DECLARE @MergeActions TABLE (ActionTaken NVARCHAR(10))
 DECLARE @Inserted INT,@Updated INT,@Deleted INT
 
 SET NOCOUNT ON
 
-SET IDENTITY_INSERT [Identity].[AspNetRoles] ON 
-
-MERGE INTO [Identity].[AspNetRoles] t
+MERGE INTO [identity].[AspNetRoles] t
 USING @src s
 ON s.Id = t.Id
 
@@ -43,7 +41,6 @@ WHEN NOT MATCHED BY SOURCE THEN
 OUTPUT $action INTO @MergeActions
 ;
 
-SET IDENTITY_INSERT [Identity].[AspNetRoles] OFF
 
 SET @Inserted = (SELECT COUNT(1) FROM @MergeActions WHERE ActionTaken = 'INSERT')
 SET @Updated = (SELECT COUNT(1) FROM @MergeActions WHERE ActionTaken = 'UPDATE')
@@ -55,5 +52,5 @@ PRINT
 	+ CONVERT(NVARCHAR(15),@Deleted) + ' rows deleted'
 
 
-PRINT 'END SEEDING [Identity].AspNetRoles'
+PRINT 'END SEEDING [identity].AspNetRoles'
 GO

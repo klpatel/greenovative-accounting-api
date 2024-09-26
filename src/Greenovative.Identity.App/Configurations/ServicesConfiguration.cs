@@ -1,5 +1,6 @@
 ﻿using Greenovative.Accounting.Framework.Data;
 using Greenovative.Identity.Infrastructure;
+using Greenovative.Identity.Infrastructure.Models;
 using Greenovative.Identity.Infrastructure.Repositories;
 using Greenovative.Identity.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,11 @@ public static class ServicesConfiguration
 {
     public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("LottomateConnection");
-        services.AddDbContext<IdentityDbContext>(x => x.UseSqlServer(connectionString));
+        var connectionString = configuration.GetConnectionString("GreenovativeAccountingConnection");
+        services.AddDbContext<ApplicationIdentityDbContext>(x => x.UseSqlServer(connectionString));
 
         //Inject UnitOfWork for an context
-        services.AddScoped<IUnitOfWork<IdentityDbContext>, UnitOfWork<IdentityDbContext>>();
+        services.AddScoped<IUnitOfWork<ApplicationIdentityDbContext>, UnitOfWork<ApplicationIdentityDbContext>>();
 
         //Identity services and repositories here
         services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();

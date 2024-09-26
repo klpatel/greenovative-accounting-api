@@ -53,5 +53,5 @@ public class AddUserResponse
 {
     public bool Exists { get; set; }
     public bool Suceess { get; set; }
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 }

@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "sqlite1": {
+      "secretStore": "LocalSecretsFile",
+      "type": "sqlite.local",
+      "connectionId": "ConnectionStrings:IdentityConnection",
+      "dynamicId": null
+    },
+    "mssql1": {
+      "secretStore": null,
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:IdentityConnection2",
+      "dynamicId": null
+    }
+  }
+}

@@ -30,9 +30,8 @@ public partial class ClientDbContext : DbContext
 
     public virtual DbSet<UserClientRole> UserClientRoles { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost,1432;Initial Catalog=Db_Greenovative_dev;User ID=sa;Password=nebula!123");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        => optionsBuilder.UseSqlServer("Data Source=localhost,1432;Initial Catalog=Db_Greenovative_dev;User ID=sa;Password=nebula!123");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -117,6 +116,11 @@ public partial class ClientDbContext : DbContext
             entity.HasOne(d => d.Contact).WithMany(p => p.Clients)
                 .HasForeignKey(d => d.ContactId)
                 .HasConstraintName("FK_Client_Contact");
+
+            entity.HasMany(d => d.Stores).WithOne(p => p.Client)
+                .HasForeignKey(d => d.ClientId)
+                .HasConstraintName("FK_Client_Store");
+
         });
 
         modelBuilder.Entity<Contact>(entity =>

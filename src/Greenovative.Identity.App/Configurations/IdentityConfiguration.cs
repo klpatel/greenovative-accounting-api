@@ -16,17 +16,34 @@ public static class IdentityConfiguration
 {
     public static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("LotoMateConnection");
-        services.AddDbContext<IdentityDbContext>(x => x.UseSqlServer(connectionString));
+        var connectionString = configuration.GetConnectionString("GreenovativeAccountingConnection");
 
-        var identity = services.AddIdentityCore<User>(opts => IdentityPolicy.BuildPasswordOptions());
+        services.AddDbContext<ApplicationIdentityDbContext>(x => x.UseSqlServer(connectionString));
 
-        IdentityBuilder builder = new IdentityBuilder(identity.UserType, typeof(Role), identity.Services);
-        builder.AddSignInManager<SignInManager<User>>();
-        builder.AddEntityFrameworkStores<IdentityDbContext>();
-        builder.AddDefaultTokenProviders();
-        builder.AddTokenProvider("LotoMate", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
-        builder.AddRoles<Role>();
+        services.AddIdentity<User, Role>(options => IdentityPolicy.BuildPasswordOptions())
+        .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        .AddRoles<Role>()
+        .AddSignInManager<SignInManager<User>>()
+        .AddDefaultTokenProviders()
+        .AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
+
+        //services.AddIdentityCore<User>(options => IdentityPolicy.BuildPasswordOptions())
+        //.AddRoles<Role>()
+        //.AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        //.AddSignInManager<SignInManager<User>>()
+        //.AddDefaultTokenProviders()
+        //.AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
+
+        //services.AddIdentityCore<User>(options => IdentityPolicy.BuildPasswordOptions());
+
+        //var identity = services.AddIdentityCore<User>(opts => IdentityPolicy.BuildPasswordOptions());
+
+        //IdentityBuilder builder = new IdentityBuilder(identity.UserType, typeof(Role), identity.Services);
+        //builder.AddSignInManager<SignInManager<User>>();
+        //builder.AddEntityFrameworkStores<ApplicationIdentityDbContext>();
+        //builder.AddDefaultTokenProviders();
+        //builder.AddTokenProvider("Greenovative", typeof(DataProtectorTokenProvider<>).MakeGenericType(typeof(User)));
+        //builder.AddRoles<Role>();
 
         //remove default claims
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();

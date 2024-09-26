@@ -46,7 +46,7 @@ public class GetClientStoreRequest : IRequest<GetClientStoreResponse>
 {
     public Guid ClientId { get; set; }
     public int StoreId { get; set; }
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 }
 
 public class GetClientStoreResponse

@@ -3,9 +3,9 @@ using Greenovative.Identity.Infrastructure.Models;
 
 namespace Greenovative.Identity.Infrastructure.Repositories;
 
-public class RoleRepository : Repository<AspNetRole, IdentityDbContext>, IRoleRepository
+public class RoleRepository : Repository<AspNetRole, ApplicationIdentityDbContext>, IRoleRepository
 {
-    public RoleRepository(IdentityDbContext context) : base(context)
+    public RoleRepository(ApplicationIdentityDbContext context) : base(context)
     {
     }
 

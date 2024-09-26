@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Greenovative.Identity.App.ViewModels;
 using Greenovative.Identity.Infrastructure.ClientModels;
+using Greenovative.Identity.Infrastructure.Models;
 using Greenovative.Identity.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -47,7 +48,7 @@ public class AddClientRoleHandler : IRequestHandler<AddClientRoleRequest, AddCli
 public class AddClientRoleRequest : IRequest<AddClientRoleResponse>
 {
     public UserClientRoleViewModel Role { get; set; }
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 }
 
 public class AddClientRoleResponse

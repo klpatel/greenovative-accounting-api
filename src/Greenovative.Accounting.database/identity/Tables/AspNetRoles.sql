@@ -1,5 +1,5 @@
-﻿CREATE TABLE [Identity].[AspNetRoles] (
-    [Id]               INT            IDENTITY (1, 1) NOT NULL,
+﻿CREATE TABLE [identity].[AspNetRoles] (
+    [Id]               uniqueidentifier NOT NULL,
     [Name]             NVARCHAR (256) NULL,
     [NormalizedName]   NVARCHAR (256) NULL,
     [ConcurrencyStamp] NVARCHAR (MAX) NULL,
@@ -9,5 +9,5 @@
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex]
-    ON [Identity].[AspNetRoles]([NormalizedName] ASC) WHERE ([NormalizedName] IS NOT NULL);
+    ON [identity].[AspNetRoles]([NormalizedName] ASC) WHERE ([NormalizedName] IS NOT NULL);
 

@@ -13,6 +13,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Greenovative.Accounting.Api/Greenovative.Accounting.Api.csproj", "src/Greenovative.Accounting.Api/"]
+COPY ["src/Greenovative.Clients.App/Greenovative.Clients.App.csproj", "src/Greenovative.Clients.App/"]
+COPY ["src/Greenovative.Clients.Infrastructure/Greenovative.Clients.Infrastructure.csproj", "src/Greenovative.Clients.Infrastructure/"]
+COPY ["src/Greenovative.Accounting.Framework/Greenovative.Accounting.Framework.csproj", "src/Greenovative.Accounting.Framework/"]
+COPY ["src/Greenovative.Identity.App/Greenovative.Identity.App.csproj", "src/Greenovative.Identity.App/"]
+COPY ["src/Greenovative.Identity.Infrastructure/Greenovative.Identity.Infrastructure.csproj", "src/Greenovative.Identity.Infrastructure/"]
 RUN dotnet restore "./src/Greenovative.Accounting.Api/Greenovative.Accounting.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Greenovative.Accounting.Api"

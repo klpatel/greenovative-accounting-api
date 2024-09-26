@@ -46,7 +46,7 @@ public class AddClientAdminRoleHandler : IRequestHandler<AddClientAdminRoleReque
 public class AddClientAdminRoleRequest : IRequest<AddClientAdminRoleResponse>
 {
     public UserClientRoleViewModel Role { get; set; }
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 }
 
 public class AddClientAdminRoleResponse

@@ -1,8 +1,6 @@
-﻿using Greenovative.Accounting.Framework.Authorisation;
-using Greenovative.Accounting.Framework.Data;
+﻿using Greenovative.Accounting.Framework.Data;
 using Greenovative.Identity.App.Application.Handlers;
 using Greenovative.Identity.App.ViewModels;
-using Greenovative.Identity.Infrastructure;
 using Greenovative.Identity.Infrastructure.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -18,14 +16,14 @@ public class ClientRegisterController : BaseController
     private readonly RoleManager<Role> roleManager;
     private readonly ILogger<ClientRegisterController> logger;
     private readonly IMediator mediator;
-    private readonly IUnitOfWork<IdentityDbContext> unitOfWork;
+    private readonly IUnitOfWork<ApplicationIdentityDbContext> unitOfWork;
 
     public ClientRegisterController(
        UserManager<User> userManager,
        RoleManager<Role> roleManager,
        ILogger<ClientRegisterController> logger,
        IMediator mediator,
-       IUnitOfWork<IdentityDbContext> unitOfWork
+       IUnitOfWork<ApplicationIdentityDbContext> unitOfWork
         , IHttpContextAccessor httpContextAccessor) : base(logger, httpContextAccessor)
     {
         this.userManager = userManager;
@@ -91,12 +89,12 @@ public class ClientRegisterController : BaseController
     }
 
     [HttpGet("getStores/{clientId}")]
-    [Authorize(Policy = AuthPolicy.ClientAdmin)]
-    public async Task<IActionResult> GetStores(int clientId)
+    //[Authorize(Policy = AuthPolicy.ClientAdmin)]
+    public async Task<IActionResult> GetStores(Guid clientId)
     {
         try
         {
-            var stores = await mediator.Send(new GetStoreRequest() { ClientId = clientId, UserId = UserId });
+            var stores = await mediator.Send(new GetStoreRequest() { ClientId = clientId, UserId = UserId.Value });
             return Ok(stores.Stores);
         }
         catch (Exception ex)

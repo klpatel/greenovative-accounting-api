@@ -38,8 +38,8 @@ public class GetStoreHandler : IRequestHandler<GetStoreRequest, GetStoreResponse
 }
 public class GetStoreRequest : IRequest<GetStoreResponse>
 {
-    public int ClientId { get; set; }
-    public int? UserId { get; set; }
+    public Guid ClientId { get; set; }
+    public Guid UserId { get; set; }
 }
 
 public class GetStoreResponse

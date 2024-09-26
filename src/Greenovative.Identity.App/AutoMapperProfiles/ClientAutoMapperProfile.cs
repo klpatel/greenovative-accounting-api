@@ -8,9 +8,9 @@ public class ClientAutoMapperProfile : Profile
 {
     public ClientAutoMapperProfile()
     {
-        CreateMap<RBAClient, RBAClientViewModel>(MemberList.Destination);
+        CreateMap<Client, RBAClientViewModel>(MemberList.Destination);
         //Used MapPath for reverse mapping and generating Contact object for email
-        CreateMap<RBAClientViewModel, RBAClient>(MemberList.Source)
+        CreateMap<RBAClientViewModel, Client>(MemberList.Source)
                 .ForPath(x => x.Contact.Email1,
                     m => m.MapFrom(x => x.EmailId));
 

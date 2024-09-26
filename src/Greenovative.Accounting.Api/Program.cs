@@ -18,6 +18,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     builder.Configuration.AddJsonFile("appsettings.Development.json");
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseSwagger();

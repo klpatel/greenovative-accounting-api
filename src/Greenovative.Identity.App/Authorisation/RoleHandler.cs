@@ -31,7 +31,8 @@ public class RoleHandler : AuthorizationHandler<HasRoleRequirement>
                 return Task.CompletedTask;
             }
             //Check authorization
-            var userId = Convert.ToInt32(context?.User.FindFirst(x => x.Type == "userId")?.Value);
+            //var userId = Convert.ToInt32(context?.User.FindFirst(x => x.Type == "userId")?.Value);
+            var userId = Guid.Parse(context!.User.FindFirst(x => x.Type == "userId")!.Value);
             var roles = userRoleRepository.Queryable().Include(x => x.Role)
                             .Where(x => x.UserId == userId).ToList();
             if (roles != null && roles.Any(x => requirement.Roles.Contains(x.Role.Name)))

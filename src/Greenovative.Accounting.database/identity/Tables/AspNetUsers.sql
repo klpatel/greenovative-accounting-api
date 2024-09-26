@@ -1,5 +1,5 @@
-﻿CREATE TABLE [Identity].[AspNetUsers] (
-    [Id]                   INT                IDENTITY (1, 1) NOT NULL,
+﻿CREATE TABLE [identity].[AspNetUsers] (
+    [Id]                   uniqueidentifier NOT NULL,
     [UserName]             NVARCHAR (256)     NULL,
     [NormalizedUserName]   NVARCHAR (256)     NULL,
     [Email]                NVARCHAR (256)     NULL,
@@ -22,10 +22,10 @@
 
 GO
 CREATE NONCLUSTERED INDEX [EmailIndex]
-    ON [Identity].[AspNetUsers]([NormalizedEmail] ASC);
+    ON [identity].[AspNetUsers]([NormalizedEmail] ASC);
 
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex]
-    ON [Identity].[AspNetUsers]([NormalizedUserName] ASC) WHERE ([NormalizedUserName] IS NOT NULL);
+    ON [identity].[AspNetUsers]([NormalizedUserName] ASC) WHERE ([NormalizedUserName] IS NOT NULL);
 

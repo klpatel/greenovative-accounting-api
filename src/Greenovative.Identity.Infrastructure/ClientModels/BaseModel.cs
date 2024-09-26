@@ -8,14 +8,14 @@ public class BaseModel
     public string ModifiedBy { get; set; }
     public DateTimeOffset? ModifiedOn { get; set; }
 
-    public void AuditAdd(int? userId)
+    public void AuditAdd(Guid? userId)
     {
         CreatedOn = DateTime.UtcNow;
         CreatedBy = userId.ToString();
         ModifiedOn = DateTime.UtcNow;
         ModifiedBy = userId.ToString();
     }
-    public void AuditUpdate(int? userId)
+    public void AuditUpdate(Guid? userId)
     {
         ModifiedOn = DateTime.UtcNow;
         ModifiedBy = userId.ToString();

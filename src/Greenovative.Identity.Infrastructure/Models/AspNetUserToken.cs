@@ -4,7 +4,7 @@ namespace Greenovative.Identity.Infrastructure.Models;
 
 public partial class AspNetUserToken
 {
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 
     public string LoginProvider { get; set; }
 
@@ -12,5 +12,5 @@ public partial class AspNetUserToken
 
     public string Value { get; set; }
 
-    public virtual AspNetUser User { get; set; }
+    public virtual User User { get; set; }
 }

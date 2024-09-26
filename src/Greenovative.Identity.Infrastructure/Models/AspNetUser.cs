@@ -4,7 +4,7 @@ namespace Greenovative.Identity.Infrastructure.Models;
 
 public partial class AspNetUser
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public string UserName { get; set; }
 
@@ -34,15 +34,14 @@ public partial class AspNetUser
 
     public int AccessFailedCount { get; set; }
 
-    public string FirstName { get; set; }
+    //public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; } = new List<AspNetUserClaim>();
 
-    public string LastName { get; set; }
+    //public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; } = new List<AspNetUserLogin>();
 
-    public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; } = new List<AspNetUserClaim>();
+    //public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; } = new List<AspNetUserToken>();
 
-    public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; } = new List<AspNetUserLogin>();
+    //public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
 
-    public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; } = new List<AspNetUserRole>();
+    //public virtual ICollection<AspNetUserRole> UserRoles { get; set; } = new List<AspNetUserRole>();
 
-    public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; } = new List<AspNetUserToken>();
 }

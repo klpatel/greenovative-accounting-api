@@ -1,6 +1,6 @@
 ﻿{
    "CodeGenerationMode": 4,
-   "ContextClassName": "IdentityDbContext",
+   "ContextClassName": "ApplicationIdentityDbContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
    "IncludeConnectionString": true,
@@ -15,31 +15,59 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "[identity].[AspNetRoleClaims]",
+         "Name": "[Client].[Address]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetRoles]",
+         "Name": "[Client].[BusinessCategory]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetUserClaims]",
+         "Name": "[Client].[BusinessType]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetUserLogins]",
+         "Name": "[Client].[Client]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetUserRoles]",
+         "Name": "[Client].[Contact]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetUsers]",
+         "Name": "[Client].[Store]",
          "ObjectType": 0
       },
       {
-         "Name": "[identity].[AspNetUserTokens]",
+         "Name": "[Client].[UserClientRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetRoleClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserLogins]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserTokens]",
          "ObjectType": 0
       }
    ],
